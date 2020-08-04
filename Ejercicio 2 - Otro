@@ -1,0 +1,50 @@
+#include <iostream>
+#include<string.h>
+
+using namespace std;
+
+/*Por cada negocio se ingresa: Nombre de comercio, rubro y código de zona en la que se encuentra.
+Se admite un máximo de 10 comercios por rubro por cada zona.*/
+
+struct Comercio{
+    string nombre;
+    int rubro;
+    unsigned zona;
+};
+
+int main()
+{
+    unsigned cant,i,j,k=0;
+    int contador[6][4];
+    //esto es para inicializar el array en 0, estaria bueno hacerlo una funcion
+    for(i=0;i<6;i++){
+        for(j=0;j<4;j++){
+            contador[i][j]=0;
+        }
+    }
+    Comercio comerc[240];
+    cout<<"Ingrese nombre comercio "<<endl;
+    cin>>comerc[k].nombre;
+    while(comerc[k].nombre!="*"){
+
+        cout<<"Ingrese rubro comercio. 1 para Pizzeria, 2 para Heladeria, 3 para Bebidas y 4 para Parrilla "<<endl;
+        cin>>comerc[k].rubro;
+        cout<<"Ingrese zona comercio "<<endl;
+        cin>>comerc[k].zona;
+        if(contador[comerc[k].zona-1][comerc[k].rubro-1]<=9){
+            contador[comerc[k].zona-1][comerc[k].rubro-1]+=1;
+            k++;
+        }
+            else{
+                    cout<<"El ultimo negocio ingresado desbordo la cantidad permitida para su rubro. Intente de nuevo. "<<endl;
+        }
+        cout<<"Ingrese nombre comercio "<<endl;
+        cin>>comerc[k].nombre;
+    }
+    //testeo
+    for(i=0;i<6;i++){
+        for(j=0;j<4;j++){
+            cout<<contador[i][j]<<endl;
+        }
+    }
+}
